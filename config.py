@@ -1,43 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-'''
-config
-'''
-
 """
-Created on Fri Aug  3 14:03:38 2018
+Created on Thu Aug  2 18:56:29 2018
 
 @author: stevenchen
 """
 
-import configparser as cp
-import json
 
-
-config = cp.RawConfigParser()
-config.read('./config.cfg')
-
-pos_images_path = config.get('paths', 'pos_images_path')
-neg_images_path = config.get('paths', 'neg_images_path')
-pos_images_lmdb = config.get('paths', 'pos_images_lmdb')
-neg_images_lmdb = config.get('paths', 'neg_images_lmdb')
-pos_features_csv = config.get('paths', 'pos_features_path')
-neg_features_csv = config.get('paths', 'neg_features_path')
-det_images_path = config.get('paths', 'det_images_path')
-det_annotation_path = config.get('paths', 'det_annotation_path')
-model_path = config.get('paths', 'model_path')
-
-# size of train and test images
-img_height = config.getint('image', 'height')
-img_width = config.getint('image', 'width')
-
-# parameters for detector
-# step_size: (w, h)
-step_size = json.loads(config.get('detector', 'step_size'))
-jobs = config.getint('detector', 'jobs')
-
-# evaluation
-eval_images_path = config.get('evaluation', 'eval_images_path')
-eval_annotation_path = config.get('evaluation', 'eval_annotation_path')
-eval_res_path = config.get('evaluation', 'eval_res_path')
+pos_im_path = '../data/images/pos_person'
+neg_im_path = '../data/images/neg_person'
+min_wdw_sz = [68, 124]
+step_size = [10, 10]
+orientations = 9
+pixels_per_cell = [6, 6]
+cells_per_block = [2, 2]
+visualize = False
+normalize = True
+pos_feat_ph = '../data/features/pos'
+neg_feat_ph = '../data/features/neg'
+model_path = '../data/models/'
+threshold = .3
